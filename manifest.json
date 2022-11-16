@@ -1,22 +1,32 @@
 {
-    "name": "Algeria to Spain Visa",
-    "description": "Apply for VISA to Spain In Algeria",
-    "version": "1.0",
-    "manifest_version": 3,
-    "action": {
-      "default_title": "Select User",
-      "default_popup": "user-dropdown.html"
-    },
-    "icons": {
-      "16": "images/icon-16.png",
-      "32": "images/icon-32.png",
-      "48": "images/icon-48.png",
-      "128": "images/icon-128.png"
-    },
-    "content_scripts": [
-        {
-            "matches": ["https://algeria.blsspainvisa.com/*"],
-            "js": ["jquery.min.js","script.js"]
-        }
-    ]
-  }
+  "name": "Algeria to Spain Visa",
+  "description": "Apply for VISA to Spain In Algeria",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "options_page": "index.html",
+  "action": {
+    "default_title": "Select User",
+    "default_popup": "user-dropdown.html"
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://algeria.blsspainvisa.com/*"
+      ],
+      "js": [
+        "jquery.min.js",
+        "script.js"
+      ]
+    }
+  ]
+}
