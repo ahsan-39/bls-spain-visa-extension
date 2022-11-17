@@ -5,11 +5,17 @@ let textarea = document.getElementById("textarea");
 let msg = document.getElementById("msg");
 let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
+// let btn_edit = document.getElementById("btn_edit");
+// let btn_delete = document.getElementById("btn_delete");
+
+let btn_edit = '';
+let btn_delete = '';
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   formValidation();
 });
+
 
 let formValidation = () => {
   if (textInput.value === "") {
@@ -53,14 +59,17 @@ let createTasks = () => {
           <p>${x.description}</p>
   
           <span class="options">
-            <i onClick= "editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fas fa-edit"></i>
-            <i onClick ="deleteTask(this);createTasks()" class="fas fa-trash-alt"></i>
+            <i data-index="${y}" data-bs-toggle="modal" data-bs-target="#form" class="fas fa-edit btn_edit"></i>
+            <i data-index="${y}" class="fas fa-trash-alt btn_delete"></i>
           </span>
         </div>
     `);
   });
 
   resetForm();
+
+  btn_edit = document.getElementsByClassName("btn_edit");
+  btn_delete = document.getElementsByClassName("btn_delete");
 };
 
 let deleteTask = (e) => {
@@ -68,7 +77,7 @@ let deleteTask = (e) => {
   data.splice(e.parentElement.parentElement.id, 1);
   localStorage.setItem("data", JSON.stringify(data));
   console.log(data);
-  
+  //createTasks();
 };
 
 let editTask = (e) => {
@@ -92,3 +101,13 @@ let resetForm = () => {
   console.log(data);
   createTasks();
 })();
+
+if(btn_delete){
+  btn_delete.addEventListener("click", (e) => {
+    e.preventDefault();
+    let index = $(this).data('index');
+    //delete data[];
+    console.log(e,index);
+    deleteTask(e);
+  });
+}
